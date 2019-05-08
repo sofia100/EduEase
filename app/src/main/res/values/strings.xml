@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">EduEase</string>
+    <string name="name">NAME</string>
+    <string name="professor">PROFESSOR</string>
+    <string name="student">STUDENT</string>
+    <string name="college">COLLEGE</string>
+    <string name="courses_offered">COURSES OFFERED</string>
 </resources>
