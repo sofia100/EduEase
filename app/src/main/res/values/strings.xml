@@ -5,4 +5,21 @@
     <string name="student">STUDENT</string>
     <string name="college">COLLEGE</string>
     <string name="courses_offered">COURSES OFFERED</string>
+    <string name="dec">DEC</string>
+    <string name="aec">AEC</string>
+    <string name="emfw">EMFW</string>
+    <string name="eem">EEM</string>
+    <string name="act">ACT</string>
+    <string name="daa">DAA</string>
+    <string name="ds">DS</string>
+    <string name="c">C</string>
+    <string name="cpp">C++</string>
+    <string name="java">JAVA</string>
+    <string name="available_time">AVAILABLE TIME</string>
+    <string name="short_time_discussions">SHORT TIME DISCUSSIONS</string>
+    <string name="long_time_classes">LONG TIME CLASSES</string>
+    <string name="both">BOTH</string>
+    <string name="available_slot">AVAILABLE SLOT</string>
+    <string name="time_in_hh_mm_24_hr_format">TIME in HH:MM (24-HR format)</string>
+    <string name="done">DONE</string>
 </resources>
