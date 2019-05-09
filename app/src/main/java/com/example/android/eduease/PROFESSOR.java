@@ -41,6 +41,7 @@ TextView slot;
       //what view
 
 
+
     }
 
     public void onCheckboxClicked(View view) {
@@ -56,6 +57,11 @@ TextView slot;
                     slot.setVisibility(View.VISIBLE);
                     time.setVisibility(View.VISIBLE);
                     // Put some meat on the sandwich
+                }
+                if (!checked){
+                    // Do your coding
+                    slot.setVisibility(View.GONE);
+                    time.setVisibility(View.GONE);
                 }
                 break;
 
