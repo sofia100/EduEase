@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/line1"
+    android:orientation="horizontal">
+           <TextView
+               android:layout_width="wrap_content"
+               android:id="@+id/name"
+               android:text="@string/name"
+               android:padding="20dp"
+               android:layout_height="wrap_content" />
+           <EditText
+               android:layout_width="match_parent"
+               android:hint="@string/name"
+               android:id="@+id/name_edit"
+               android:inputType="textPersonName"
+               android:layout_height="wrap_content" />
+</LinearLayout>
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:id="@+id/line2"
+    android:layout_height="wrap_content">
+           <TextView
+               android:layout_width="wrap_content"
+               android:id="@+id/cllg"
+               android:text="@string/college"
+               android:padding="20dp"
+               android:layout_height="wrap_content" />
+           <EditText
+
+               android:inputType="textPersonName"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/cllg_edit"
+               android:hint="@string/college"/>
+</LinearLayout>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:id="@+id/courses_offered"
+               android:text="@string/courses_offered"
+               android:padding="20dp"
+               android:layout_height="wrap_content" />
+    <!--
+    later dropdown or something like adding new adding new field-->
+    <CheckBox android:id="@+id/checkbox_java"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/java"/>
+    <CheckBox android:id="@+id/checkbox_cpp"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cpp"/>
+    <CheckBox android:id="@+id/checkbox_c"
+    android:layout_width="wrap_content"
+        android:padding="10dp"
+    android:layout_height="wrap_content"
+    android:text="@string/c"/>
+    <CheckBox android:id="@+id/checkbox_ds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/ds"/>
+    <CheckBox android:id="@+id/checkbox_daa"
+    android:layout_width="wrap_content"
+        android:padding="10dp"
+    android:layout_height="wrap_content"
+    android:text="@string/daa"/>
+    <CheckBox android:id="@+id/checkbox_act"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/act"/>
+    <CheckBox android:id="@+id/checkbox_eem"
+    android:layout_width="wrap_content"
+        android:padding="10dp"
+    android:layout_height="wrap_content"
+    android:text="@string/eem"/>
+
+    <CheckBox
+        android:id="@+id/checkbox_emfw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/emfw" />
+
+    <CheckBox android:id="@+id/checkbox_aec"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:padding="10dp"
+    android:text="@string/aec"/>
+    <CheckBox android:id="@+id/checkbox_DEC"
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:text="@string/dec"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/timing_offered"
+        android:text="@string/available_time"
+        android:padding="20dp"
+        android:layout_height="wrap_content" />
+    <CheckBox android:id="@+id/checkbox_short_discussion"
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:text="@string/short_time_discussions"/>
+
+    <CheckBox android:id="@+id/checkbox_long_class"
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:text="@string/long_time_classes"/>
+    <CheckBox android:id="@+id/checkbox_both"
+        android:layout_width="wrap_content"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:text="@string/both"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/timing_offered_slot"
+        android:text="@string/available_slot"
+        android:padding="20dp"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
+    <!--
+    later add time picker dialog-->
+    <EditText
+        android:visibility="invisible"
+        android:inputType="time"
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/time_in_hh_mm_24_hr_format"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:id="@+id/done"
+        android:textSize="25sp"
+        android:text="@string/done"
+        android:background="@color/colorPrimaryDark"/>
+
+</LinearLayout>
+    </ScrollView>
