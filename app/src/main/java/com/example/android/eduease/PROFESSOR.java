@@ -17,6 +17,7 @@ TextView slot;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professor);
+
         done = findViewById(R.id.done);
         java= findViewById(R.id.checkbox_java);
         c= findViewById(R.id.checkbox_c);
@@ -37,7 +38,7 @@ TextView slot;
         both= findViewById(R.id.checkbox_both);
 
         //sign up n sign in b chk karna h
-        onCheckboxClicked(null);//what view
+      //what view
 
 
     }
