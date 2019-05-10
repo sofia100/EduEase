@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.eduease">
-<uses-permission android:name="android.permission.INTERNET"/>
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_PROFILE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TEACHER_DASHBOARD"></activity>
         <activity
             android:name=".PROFESSOR_LoginActivity"
-            android:label="@string/title_activity_professor__login"></activity>
+            android:label="@string/title_activity_professor__login" />
         <activity android:name=".PROFESSOR" />
         <activity android:name=".MainActivity">
             <intent-filter>
