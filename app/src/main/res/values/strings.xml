@@ -36,4 +36,7 @@
         completions."
     </string>
     <string name="scheduled_meetings">SCHEDULED MEETINGS</string>
+    <string name="from_time">FROM TIME</string>
+    <string name="to_time">TO TIME</string>
+    <string name="available_time_in_hh_mm">AVAILABLE TIME IN HH:MM</string>
 </resources>

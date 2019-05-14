@@ -1,7 +1,7 @@
 package com.example.android.eduease;
 
 public class TeacherDataUpload {
-    String name, cllg, time;
+    String name, cllg, timeTo,timeFRom;
     boolean java,cpp,c,ds,daa,act,emfw,eem,aec,dec,shortTime,longTime,both;
 
     public boolean isC() {
@@ -44,8 +44,8 @@ public class TeacherDataUpload {
         return java;
     }
 
-    public String getTime() {
-        return time;
+    public String getTimeTo() {
+        return timeTo;
     }
 
     public boolean isShortTime() {
@@ -68,13 +68,13 @@ public class TeacherDataUpload {
         return cllg;
     }
 
-    TeacherDataUpload(String NAME,String COLLEGE,String TIME, boolean C,boolean DAA,boolean DS,boolean CPP,
+    TeacherDataUpload(String NAME,String COLLEGE,String TIME_TO, boolean C,boolean DAA,boolean DS,boolean CPP,
     boolean ACT,boolean AEC,boolean DEC,boolean EEM,boolean EMFW,boolean JAVA,boolean BOTH,boolean SHORT,
                       boolean LONG)
     {
         name= NAME;
         cllg=COLLEGE;
-        time= TIME;
+        timeTo= TIME_TO;
         c=C;
         cpp=CPP;
         daa= DAA;
@@ -94,7 +94,7 @@ public class TeacherDataUpload {
 
     TeacherDataUpload()
     {
-         name= cllg= time=null;
+         name= cllg= timeTo=null;
          java=cpp=c=ds=daa=act=emfw=eem=aec=dec=shortTime=longTime=both=false;
 
     }
@@ -158,8 +158,11 @@ public class TeacherDataUpload {
         this.longTime = longTime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setTimeTo(String time) {
+        this.timeTo = time;
     }
 
+    public void setTimeFRom(String timeFRom) {
+        this.timeFRom = timeFRom;
+    }
 }
