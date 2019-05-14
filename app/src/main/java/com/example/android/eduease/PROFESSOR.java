@@ -1,7 +1,5 @@
 package com.example.android.eduease;
 
-import android.net.Uri;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +9,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,7 +27,7 @@ TextView slot;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professor);
 
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
+       mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
 
         done = findViewById(R.id.done);
         java= findViewById(R.id.checkbox_java);
@@ -51,8 +48,6 @@ TextView slot;
         time=findViewById(R.id.time);
         both= findViewById(R.id.checkbox_both);
 
-        //sign up n sign in b chk karna h
-      //what view
 
         itemUpload.setName(name.getText().toString());
         itemUpload.setCllg(cllg.getText().toString());

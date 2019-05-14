@@ -81,6 +81,8 @@ public class PROFESSOR_LoginActivity extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "createUserWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
+
+                                    Toast.makeText(getApplicationContext(), "SUCCESSFUL REGISTRATION", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(PROFESSOR_LoginActivity.this, PROFESSOR.class);
                                     startActivity(intent);
 
