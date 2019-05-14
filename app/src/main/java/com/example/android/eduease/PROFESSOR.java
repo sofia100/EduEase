@@ -16,7 +16,7 @@ public class PROFESSOR extends AppCompatActivity {
 Button done;
 CheckBox java,c,cpp,ds,daa,emfw,eem,act,aec,dec,short_time,long_time,both;
 EditText cllg,name,time;
-TextView slot;
+//TextView slot;
     private DatabaseReference mDatabaseRef;
     public static String DATABASE_PATH = "children";
 
@@ -27,27 +27,29 @@ TextView slot;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professor);
 
-      // mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
+      mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
+
+      itemUpload=new TeacherDataUpload();
 
         done = findViewById(R.id.done);
-        java= findViewById(R.id.checkbox_java);
-        c= findViewById(R.id.checkbox_c);
         cpp= findViewById(R.id.checkbox_cpp);
-        ds= findViewById(R.id.checkbox_ds);
-        daa= findViewById(R.id.checkbox_daa);
-        slot=findViewById(R.id.timing_offered_slot);
-        emfw= findViewById(R.id.checkbox_emfw);
-        eem= findViewById(R.id.checkbox_eem);
-        aec= findViewById(R.id.checkbox_aec);
         act= findViewById(R.id.checkbox_act);
         dec= findViewById(R.id.checkbox_DEC);
-        short_time= findViewById(R.id.checkbox_short_discussion);
-        long_time= findViewById(R.id.checkbox_long_class);
         cllg=findViewById(R.id.cllg_edit);
         name=findViewById(R.id.name_edit);
+
+        java= findViewById(R.id.checkbox_java);
+        c= findViewById(R.id.checkbox_c);
+        ds= findViewById(R.id.checkbox_ds);
         time=findViewById(R.id.time);
         both= findViewById(R.id.checkbox_both);
 
+        daa= findViewById(R.id.checkbox_daa);
+        eem= findViewById(R.id.checkbox_eem);
+        aec= findViewById(R.id.checkbox_aec);
+        emfw= findViewById(R.id.checkbox_emfw);
+        short_time= findViewById(R.id.checkbox_short_discussion);
+        long_time= findViewById(R.id.checkbox_long_class);
 
         itemUpload.setName(name.getText().toString());
         itemUpload.setCllg(cllg.getText().toString());
@@ -58,10 +60,10 @@ TextView slot;
             @Override
             public void onClick(View view) {
 
-               // String s =mDatabaseRef.push().getKey();
+                 String s =mDatabaseRef.push().getKey();
 
 
-              //  mDatabaseRef.child(s).setValue(itemUpload);
+                 mDatabaseRef.child(s).setValue(itemUpload);
 
                 Toast.makeText(getApplicationContext(),"UPLOADED DATA TO DB",Toast.LENGTH_SHORT).show();
 
@@ -70,8 +72,11 @@ TextView slot;
 
 
 
+
+
     }
 
+    //errors in chk boxes too
     public void onCheckboxClicked(View view) {
         // Is the view now checked?
         boolean checked = ((CheckBox) view).isChecked();

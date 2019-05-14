@@ -50,17 +50,7 @@ public class PROFESSOR_LoginActivity extends AppCompatActivity {
 
         mPasswordView = findViewById(R.id.password);
 
-       /* mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
-*/
+
         mEmailSignInButton = findViewById(R.id.email_sign_in_button);
 
         mAuth = FirebaseAuth.getInstance();
