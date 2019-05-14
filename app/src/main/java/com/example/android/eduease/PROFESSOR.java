@@ -27,7 +27,7 @@ TextView slot;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professor);
 
-       mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
+      // mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
 
         done = findViewById(R.id.done);
         java= findViewById(R.id.checkbox_java);
@@ -58,10 +58,10 @@ TextView slot;
             @Override
             public void onClick(View view) {
 
-                String s =mDatabaseRef.push().getKey();
+               // String s =mDatabaseRef.push().getKey();
 
 
-                mDatabaseRef.child(s).setValue(itemUpload);
+              //  mDatabaseRef.child(s).setValue(itemUpload);
 
                 Toast.makeText(getApplicationContext(),"UPLOADED DATA TO DB",Toast.LENGTH_SHORT).show();
 
