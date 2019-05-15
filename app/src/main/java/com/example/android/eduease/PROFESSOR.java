@@ -17,22 +17,48 @@ public class PROFESSOR extends AppCompatActivity {
 Button done;
 CheckBox java,c,cpp,ds,daa,emfw,eem,act,aec,dec,short_time,long_time,both;
 EditText cllg,name,timeTO,timeFrom;
-//TextView slot;
-    private DatabaseReference mDatabaseRef;
+
+    private DatabaseReference mDatabaseRef,AecRef,
+    ActRef,
+    DecREf,
+    CppREf,
+    CREf,
+    DaaRef,
+    DsREf,
+    EemREf,
+    EmfwRef,
+    JavaREf,
+    SHortRef,
+    LOngREf,
+    BothRef;
     public static String DATABASE_PATH = "children";
+    public static  String ACT="ACT",AEC="AEC",DEC="DEC",EEM="EEM",EMFW="EMFW",CPP="CPP",C="C",DS="DS",DAA="DAA",JAVA="JAVA",SHORT="SHORT",LONG="LONG",BOTH="BOTH";
     String n,clg,tymTo,tymFrom;
 
 
     TeacherDataUpload itemUpload;
-  //  private Uri uri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professor);
 
-      mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
+        AecRef = FirebaseDatabase.getInstance().getReference(AEC);
+        ActRef = FirebaseDatabase.getInstance().getReference(ACT);
+        EemREf= FirebaseDatabase.getInstance().getReference(EEM);
+        EmfwRef= FirebaseDatabase.getInstance().getReference(EMFW);
+        DecREf= FirebaseDatabase.getInstance().getReference(DEC);
+        DaaRef= FirebaseDatabase.getInstance().getReference(DAA);
+        CREf= FirebaseDatabase.getInstance().getReference(C);
+        CppREf= FirebaseDatabase.getInstance().getReference(CPP);
+        JavaREf= FirebaseDatabase.getInstance().getReference(JAVA);
+        DsREf= FirebaseDatabase.getInstance().getReference(DS);
+        LOngREf = FirebaseDatabase.getInstance().getReference(LONG);
+        SHortRef= FirebaseDatabase.getInstance().getReference(SHORT);
+        BothRef= FirebaseDatabase.getInstance().getReference(BOTH);
 
-      itemUpload=new TeacherDataUpload();
+        itemUpload=new TeacherDataUpload();
 
         done = findViewById(R.id.done);
         cpp= findViewById(R.id.checkbox_cpp);
@@ -40,22 +66,18 @@ EditText cllg,name,timeTO,timeFrom;
         dec= findViewById(R.id.checkbox_DEC);
         cllg=findViewById(R.id.cllg_edit);
         name=findViewById(R.id.name_edit);
-
         java= findViewById(R.id.checkbox_java);
         c= findViewById(R.id.checkbox_c);
         ds= findViewById(R.id.checkbox_ds);
         timeTO=findViewById(R.id.time_to);
         timeFrom=findViewById(R.id.time_from);
         both= findViewById(R.id.checkbox_both);
-
         daa= findViewById(R.id.checkbox_daa);
         eem= findViewById(R.id.checkbox_eem);
         aec= findViewById(R.id.checkbox_aec);
         emfw= findViewById(R.id.checkbox_emfw);
         short_time= findViewById(R.id.checkbox_short_discussion);
         long_time= findViewById(R.id.checkbox_long_class);
-
-
 
 
         done.setOnClickListener(new View.OnClickListener() {
@@ -68,8 +90,6 @@ EditText cllg,name,timeTO,timeFrom;
                 tymTo= timeTO.getText().toString();
                 tymFrom = timeFrom.getText().toString();
 
-               // Toast.makeText(getApplicationContext(),n+clg+tymFrom+tymTo,Toast.LENGTH_SHORT).show();
-
                 itemUpload.setName(n);
                 itemUpload.setCllg(clg);
                 itemUpload.setTimeTo(tymTo);
@@ -77,6 +97,46 @@ EditText cllg,name,timeTO,timeFrom;
 
 
                 mDatabaseRef.child(s).setValue(itemUpload);
+                
+                if(itemUpload.isAec())
+                    AecRef.child(AecRef.push().getKey()).setValue(itemUpload);
+
+                if(itemUpload.isC())
+                    CREf.child(CREf.push().getKey()).setValue(itemUpload);
+                
+                if(itemUpload.isEem())
+                    EemREf.child(EemREf.push().getKey()).setValue(itemUpload);
+
+                if(itemUpload.isEmfw())
+                    EmfwRef.child(EmfwRef.push().getKey()).setValue(itemUpload);
+
+                if(itemUpload.isDec())
+                    DecREf.child(DecREf.push().getKey()).setValue(itemUpload);
+
+                if(itemUpload.isDaa())
+                    DaaRef.child(DaaRef.push().getKey()).setValue(itemUpload);
+
+                if(itemUpload.isDs())
+                    DsREf.child(DsREf.push().getKey()).setValue(itemUpload);
+
+                if(itemUpload.isJava())
+                    JavaREf.child(JavaREf.push().getKey()).setValue(itemUpload);
+
+                if(itemUpload.isAct())
+                    ActRef.child(ActRef.push().getKey()).setValue(itemUpload);
+
+                if(itemUpload.isCpp())
+                    CppREf.child(CppREf.push().getKey()).setValue(itemUpload);
+
+                if(itemUpload.isLongTime())
+                    LOngREf.child(LOngREf.push().getKey()).setValue(itemUpload);
+
+                if(itemUpload.isShortTime())
+                    SHortRef.child(SHortRef.push().getKey()).setValue(itemUpload);
+
+                if(itemUpload.isBoth())
+                    BothRef.child(BothRef.push().getKey()).setValue(itemUpload);
+
 
                 Toast.makeText(getApplicationContext(),"UPLOADED DATA TO DB",Toast.LENGTH_SHORT).show();
 
