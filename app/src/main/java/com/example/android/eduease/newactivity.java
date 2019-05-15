@@ -81,6 +81,7 @@ public class newactivity extends AppCompatActivity {
                 {
 
                     Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
+                    intent.putExtra("subject","JAVA");
                     startActivity(intent);
                 }
 
