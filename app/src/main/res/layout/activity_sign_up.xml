@@ -54,6 +54,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="100dp"
         android:layout_height="50dp"
+        android:id="@+id/card_reg"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="454dp"

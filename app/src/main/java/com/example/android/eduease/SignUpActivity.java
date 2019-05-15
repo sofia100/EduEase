@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -20,6 +21,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText editID, editEmail, editPass, editRePass;
     private TextView registerTx;
     private FirebaseAuth fbAuth;
+    CardView register;
 
     private ProgressBar progressBar;
 
@@ -32,6 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
+        register=findViewById(R.id.card_reg);
         editID = findViewById(R.id.editID);
         editEmail = findViewById(R.id.textemailID);
         editPass = findViewById(R.id.editPasskey);
@@ -43,6 +46,12 @@ public class SignUpActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                userRegister();
+            }
+        });
         registerTx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

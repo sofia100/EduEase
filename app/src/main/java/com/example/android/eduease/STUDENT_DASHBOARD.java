@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,16 +45,10 @@ ListView listView;
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                //String value = dataSnapshot.getValue(String.class);
-               // TeacherDataUpload value = dataSnapshot.getValue(TeacherDataUpload.class);
 
                 collectNames((Map<String,TeacherDataUpload>) dataSnapshot.getValue());
 
-              //  Toast.makeText(getApplicationContext(),"teacher is "+value.getName(),Toast.LENGTH_SHORT).show();
-
-
-               // Log.d(TAG, "Value is: " + value);
-            }
+             }
 
             @Override
             public void onCancelled(DatabaseError error) {
@@ -63,12 +60,7 @@ ListView listView;
         });
     }
     private void collectNames(Map<String,TeacherDataUpload> users) {
-/*
-        ArrayList<String> names = new ArrayList<>();
 
-        ArrayList<String> timeTo = new ArrayList<>();
-
-        ArrayList<String> timeFrom = new ArrayList<>();*/
 
 ArrayList<TeacherDataRetrieve> obj = new ArrayList<>();
 
@@ -83,41 +75,43 @@ ArrayList<TeacherDataRetrieve> obj = new ArrayList<>();
                     singleUser.get("timeFRom").toString()));
 
 
-          /*  names.add((String) singleUser.get("name"));
-            timeFrom.add((String) singleUser.get("timeFRom"));
-            timeTo.add((String) singleUser.get("timeTo"));
-      */  }
-      /* Toast.makeText(getApplicationContext(),"teacher is "+names.toString(),Toast.LENGTH_SHORT).show();
-
-        Toast.makeText(getApplicationContext(),"FROM TIME  is "+timeFrom.toString(),Toast.LENGTH_SHORT).show();
-
-        Toast.makeText(getApplicationContext(),"TO TIME is "+timeTo.toString(),Toast.LENGTH_SHORT).show();
-*/
-       /* List<String> combined = new ArrayList<String>();
-        combined.addAll(names);
-        combined.addAll(timeFrom);
-        combined.addAll(timeTo);
-
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item,combined);
-
-        listView.setAdapter(adapter);
-*/
-
-
-      /*  ArrayAdapter adapterTotime = new ArrayAdapter<String>(this, R.layout.list_item,timeTo);
-        ArrayAdapter adapterFrmtym = new ArrayAdapter<String>(this, R.layout.list_item,timeFrom);
-        ArrayAdapter adapterNames = new ArrayAdapter<String>(this, R.layout.list_item,names);
-
-        listTotime.setAdapter(adapterTotime);
-        listFromtime.setAdapter(adapterFrmtym);
-        listName.setAdapter(adapterNames);
-*/
-
-        // System.out.println(names.toString());
+            }
         objAdapter adapter = new objAdapter(getApplicationContext(), obj);
 
         listView.setAdapter(adapter);
 
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_bar,menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch(id)
+        {
+
+
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(STUDENT_DASHBOARD.this,STUDENT.class));
+                finish();
+                break;
+        }
+        return true;
+    }
+
+    @Override//just a comment for git
+
+    public void onBackPressed() {
+        //sign out from app even if back is pressed
+        FirebaseAuth.getInstance().signOut();
+        super.onBackPressed();
 
     }
 }
