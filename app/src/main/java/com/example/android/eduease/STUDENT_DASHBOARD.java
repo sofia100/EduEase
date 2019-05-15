@@ -63,12 +63,14 @@ ListView listView;
         });
     }
     private void collectNames(Map<String,TeacherDataUpload> users) {
-
+/*
         ArrayList<String> names = new ArrayList<>();
 
         ArrayList<String> timeTo = new ArrayList<>();
 
-        ArrayList<String> timeFrom = new ArrayList<>();
+        ArrayList<String> timeFrom = new ArrayList<>();*/
+
+ArrayList<TeacherDataRetrieve> obj = new ArrayList<>();
 
         //iterate through each user, ignoring their UID
         for (Map.Entry<String, TeacherDataUpload> entry : users.entrySet()){
@@ -76,17 +78,22 @@ ListView listView;
             //Get user map
             Map singleUser = (Map) entry.getValue();
             //Get phone field and append to list
-            names.add((String) singleUser.get("name"));
+            obj.add( new TeacherDataRetrieve( singleUser.get("name").toString(),
+                    singleUser.get("timeTo").toString(),
+                    singleUser.get("timeFRom").toString()));
+
+
+          /*  names.add((String) singleUser.get("name"));
             timeFrom.add((String) singleUser.get("timeFRom"));
             timeTo.add((String) singleUser.get("timeTo"));
-        }
-        Toast.makeText(getApplicationContext(),"teacher is "+names.toString(),Toast.LENGTH_SHORT).show();
+      */  }
+      /* Toast.makeText(getApplicationContext(),"teacher is "+names.toString(),Toast.LENGTH_SHORT).show();
 
         Toast.makeText(getApplicationContext(),"FROM TIME  is "+timeFrom.toString(),Toast.LENGTH_SHORT).show();
 
         Toast.makeText(getApplicationContext(),"TO TIME is "+timeTo.toString(),Toast.LENGTH_SHORT).show();
-
-        List<String> combined = new ArrayList<String>();
+*/
+       /* List<String> combined = new ArrayList<String>();
         combined.addAll(names);
         combined.addAll(timeFrom);
         combined.addAll(timeTo);
@@ -94,7 +101,23 @@ ListView listView;
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_item,combined);
 
         listView.setAdapter(adapter);
+*/
+
+
+      /*  ArrayAdapter adapterTotime = new ArrayAdapter<String>(this, R.layout.list_item,timeTo);
+        ArrayAdapter adapterFrmtym = new ArrayAdapter<String>(this, R.layout.list_item,timeFrom);
+        ArrayAdapter adapterNames = new ArrayAdapter<String>(this, R.layout.list_item,names);
+
+        listTotime.setAdapter(adapterTotime);
+        listFromtime.setAdapter(adapterFrmtym);
+        listName.setAdapter(adapterNames);
+*/
 
         // System.out.println(names.toString());
+        objAdapter adapter = new objAdapter(getApplicationContext(), obj);
+
+        listView.setAdapter(adapter);
+
+
     }
 }
