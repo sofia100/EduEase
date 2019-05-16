@@ -23,7 +23,7 @@ CardView sigin,log;
         login = findViewById(R.id.login);
 
         sigin= findViewById(R.id.signinCard);
-        log=findViewById(R.id.loginCard);
+        log=findViewById(R.id.logCard);
         signin = findViewById(R.id.signin);
 
         signin.setOnClickListener(new View.OnClickListener() {

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -25,7 +27,8 @@ public class STUDENT_DASHBOARD extends AppCompatActivity {
 String TAG = "STUDENT_DASHBOARD";
     FirebaseDatabase database;
     DatabaseReference myRef;
-ListView listView;
+    ArrayList<TeacherDataRetrieve> obj;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +61,29 @@ ListView listView;
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                TeacherDataRetrieve data = obj.get(i);
+
+                Intent intent= new Intent(STUDENT_DASHBOARD.this,TeacherDetail.class);
+
+                intent.putExtra("name",data.getName());
+                intent.putExtra("cllg",data.getCllg());
+                intent.putExtra("toTime",data.getTimeTo());
+                intent.putExtra("frmTime",data.getTimeFrom());
+                //name or key or all data of the teacher selected
+                startActivity(intent);
+            }
+        });
+
     }
+
+
     private void collectNames(Map<String,TeacherDataUpload> users) {
 
-
-ArrayList<TeacherDataRetrieve> obj = new ArrayList<>();
+       obj= new ArrayList<>();
 
         //iterate through each user, ignoring their UID
         for (Map.Entry<String, TeacherDataUpload> entry : users.entrySet()){
@@ -72,7 +93,8 @@ ArrayList<TeacherDataRetrieve> obj = new ArrayList<>();
             //Get phone field and append to list
             obj.add( new TeacherDataRetrieve( singleUser.get("name").toString(),
                     singleUser.get("timeTo").toString(),
-                    singleUser.get("timeFRom").toString()));
+                    singleUser.get("timeFRom").toString(),
+                    singleUser.get("cllg").toString()));
 
 
             }

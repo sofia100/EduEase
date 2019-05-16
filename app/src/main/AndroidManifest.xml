@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".STUDENT_DASHBOARD"></activity>
+        <activity android:name=".TeacherDetail"></activity>
+        <activity android:name=".STUDENT_DASHBOARD" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".newactivity" />
+        <activity android:name=".ChooseSubject" />
         <activity android:name=".LogInActivity" />
         <activity android:name=".STUDENT" />
         <activity android:name=".TEACHER_DASHBOARD" />

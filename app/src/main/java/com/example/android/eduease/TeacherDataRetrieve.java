@@ -1,12 +1,17 @@
 package com.example.android.eduease;
 
 public class TeacherDataRetrieve {
-    String name,timeTo,TimeFrom;
-    TeacherDataRetrieve(String n,String t,String f)
+    String name,timeTo,TimeFrom,cllg;
+    TeacherDataRetrieve(String n,String t,String f,String clg)
     {
         name=n;
+        cllg=clg;
         timeTo = t;
         TimeFrom=f;
+    }
+
+    public String getCllg() {
+        return cllg;
     }
 
     public String getName() {
