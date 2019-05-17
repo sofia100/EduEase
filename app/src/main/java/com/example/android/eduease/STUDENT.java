@@ -24,6 +24,7 @@ CardView sigin,log;
 
         sigin= findViewById(R.id.signinCard);
         log=findViewById(R.id.logCard);
+
         signin = findViewById(R.id.signin);
 
         signin.setOnClickListener(new View.OnClickListener() {
