@@ -1,0 +1,649 @@
+Index: .idea/runConfigurations.xml
+===================================================================
+--- .idea/runConfigurations.xml	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
++++ .idea/runConfigurations.xml	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RunConfigurationProducerService">
++    <option name="ignoredProducers">
++      <set>
++        <option value="org.jetbrains.plugins.gradle.execution.test.runner.AllInPackageGradleConfigurationProducer" />
++        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestClassGradleConfigurationProducer" />
++        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestMethodGradleConfigurationProducer" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_professor.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_professor.xml	(date 1558284179473)
++++ app/src/main/res/layout/activity_professor.xml	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
+@@ -1,8 +1,8 @@
+ <?xml version="1.0" encoding="utf-8"?>
+-<ScrollView android:layout_width="match_parent"
++<ScrollView
++    android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns="http://schemas.android.com/apk/res/android">
++    xmlns:android="http://schemas.android.com/apk/res/android">
+ 
+ 
+ <LinearLayout
+Index: app/src/main/java/com/example/android/eduease/PROFESSOR.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/android/eduease/PROFESSOR.java	(date 1558284485054)
++++ app/src/main/java/com/example/android/eduease/PROFESSOR.java	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
+@@ -1,6 +1,5 @@
+ package com.example.android.eduease;
+ 
+-import android.R;
+ import android.content.Intent;
+ import android.support.v7.app.AppCompatActivity;
+ import android.os.Bundle;
+Index: app/src/main/java/com/example/android/eduease/STUDENT_DASHBOARD.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/android/eduease/STUDENT_DASHBOARD.java	(date 1558162859814)
++++ app/src/main/java/com/example/android/eduease/STUDENT_DASHBOARD.java	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
+@@ -24,7 +24,7 @@
+ import java.util.Map;
+ 
+ public class STUDENT_DASHBOARD extends AppCompatActivity {
+-String userkey,teacherUserKey,TAG = "STUDENT_DASHBOARD";
++String TAG = "STUDENT_DASHBOARD";
+     FirebaseDatabase database;
+     DatabaseReference myRef;
+     ArrayList<TeacherDataRetrieve> obj;
+@@ -37,7 +37,7 @@
+ 
+         Intent intent = getIntent();
+         String subj = intent.getStringExtra("subject");
+-        userkey=intent.getStringExtra("userkey");
++
+         database= FirebaseDatabase.getInstance();
+         myRef = database.getReference(subj);//subject
+ 
+@@ -49,28 +49,7 @@
+                 // This method is called once with the initial value and again
+                 // whenever data at this location is updated.
+ 
+-               // collectNames((Map<String,TeacherDataUpload>) dataSnapshot.getValue());
+-                obj= new ArrayList<>();
+-                Map<String,TeacherDataUpload> users =(Map<String,TeacherDataUpload>) dataSnapshot.getValue();
+-                //iterate through each user, ignoring their UID
+-                for (Map.Entry<String, TeacherDataUpload> entry : users.entrySet()){
+-
+-                    //Get user map
+-                    Map singleUser = (Map) entry.getValue();
+-                    teacherUserKey = entry.getKey();
+-                    //Get phone field and append to list
+-                    obj.add( new TeacherDataRetrieve( singleUser.get("name").toString(),
+-                            singleUser.get("timeTo").toString(),
+-                            singleUser.get("timeFRom").toString(),
+-                            singleUser.get("cllg").toString(),
+-                            teacherUserKey
+-                    ));
+-
+-
+-                }
+-                objAdapter adapter = new objAdapter(getApplicationContext(), obj);
+-
+-                listView.setAdapter(adapter);
++                collectNames((Map<String,TeacherDataUpload>) dataSnapshot.getValue());
+ 
+              }
+ 
+@@ -90,12 +69,10 @@
+ 
+                 Intent intent= new Intent(STUDENT_DASHBOARD.this,TeacherDetail.class);
+ 
+-                intent.putExtra("userkey",userkey);
+                 intent.putExtra("name",data.getName());
+                 intent.putExtra("cllg",data.getCllg());
+                 intent.putExtra("toTime",data.getTimeTo());
+                 intent.putExtra("frmTime",data.getTimeFrom());
+-                intent.putExtra("teacherKey",data.getKey());
+                 //name or key or all data of the teacher selected
+                 startActivity(intent);
+             }
+@@ -104,7 +81,6 @@
+     }
+ 
+ 
+-/*
+     private void collectNames(Map<String,TeacherDataUpload> users) {
+ 
+        obj= new ArrayList<>();
+@@ -114,13 +90,11 @@
+ 
+             //Get user map
+             Map singleUser = (Map) entry.getValue();
+-            teacherUserKey = entry.getKey();
+             //Get phone field and append to list
+             obj.add( new TeacherDataRetrieve( singleUser.get("name").toString(),
+                     singleUser.get("timeTo").toString(),
+                     singleUser.get("timeFRom").toString(),
+-                    singleUser.get("cllg").toString()
+-                   ));
++                    singleUser.get("cllg").toString()));
+ 
+ 
+             }
+@@ -130,7 +104,6 @@
+ 
+ 
+     }
+-*/
+     @Override
+     public boolean onCreateOptionsMenu(Menu menu) {
+         getMenuInflater().inflate(R.menu.menu_bar,menu);
+Index: app/src/main/java/com/example/android/eduease/ChooseSubject.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/android/eduease/ChooseSubject.java	(date 1558164192122)
++++ app/src/main/java/com/example/android/eduease/ChooseSubject.java	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
+@@ -1,6 +1,5 @@
+ package com.example.android.eduease;
+ 
+-import android.R;
+ import android.content.Intent;
+ import android.support.v7.app.AppCompatActivity;
+ import android.os.Bundle;
+@@ -9,16 +8,13 @@
+ 
+ public class ChooseSubject extends AppCompatActivity {
+     CheckBox sjava,sc,scpp,sds,sdaa,semfw,seem,sact,saec,sdec,cse,etc ;
+-String userkey;
++
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.choose_subj);
+ 
+-        Intent i=getIntent();
+-        userkey= i.getStringExtra("userkey");
+-
+         sjava= findViewById(R.id.checkbox_JAVA);
+         sc= findViewById(R.id.checkbox_C);
+         scpp= findViewById(R.id.checkbox_CPP);
+@@ -85,7 +81,6 @@
+                 {
+ 
+                     Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
+-                    intent.putExtra("userkey",userkey);
+                     intent.putExtra("subject","JAVA");
+                     startActivity(intent);
+                 }
+@@ -95,7 +90,6 @@
+                 {
+ 
+                     Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
+-                    intent.putExtra("userkey",userkey);
+                     intent.putExtra("subject","ACT");
+                     startActivity(intent);
+                 }
+@@ -105,7 +99,6 @@
+                 {
+ 
+                     Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
+-                    intent.putExtra("userkey",userkey);
+                     intent.putExtra("subject","AEC");
+                     startActivity(intent);
+                 }
+@@ -116,7 +109,6 @@
+ 
+                     Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
+                     intent.putExtra("subject","DS");
+-                    intent.putExtra("userkey",userkey);
+                     startActivity(intent);
+                 }
+                 break;
+@@ -125,7 +117,6 @@
+                 {
+ 
+                     Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
+-                    intent.putExtra("userkey",userkey);
+                     intent.putExtra("subject","DEC");
+                     startActivity(intent);
+                 }
+@@ -135,7 +126,6 @@
+                 {
+ 
+                     Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
+-                    intent.putExtra("userkey",userkey);
+                     intent.putExtra("subject","C");
+                     startActivity(intent);
+                 }
+@@ -146,7 +136,6 @@
+ 
+                     Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
+                     intent.putExtra("subject","CPP");
+-                    intent.putExtra("userkey",userkey);
+                     startActivity(intent);
+                 }
+                 break;
+@@ -155,7 +144,6 @@
+                 {
+ 
+                     Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
+-                    intent.putExtra("userkey",userkey);
+                     intent.putExtra("subject","EEM");
+                     startActivity(intent);
+                 }
+@@ -165,7 +153,6 @@
+                 {
+ 
+                     Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
+-                    intent.putExtra("userkey",userkey);
+                     intent.putExtra("subject","EMFW");
+                     startActivity(intent);
+                 }
+@@ -176,7 +163,6 @@
+ 
+                     Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
+                     intent.putExtra("subject","DAA");
+-                    intent.putExtra("userkey",userkey);
+                     startActivity(intent);
+                 }
+                 break;
+Index: app/src/main/java/com/example/android/eduease/LogInActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/android/eduease/LogInActivity.java	(date 1558163970550)
++++ app/src/main/java/com/example/android/eduease/LogInActivity.java	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
+@@ -21,7 +21,6 @@
+     private FirebaseAuth fbAuth;
+     private TextView loginTx, signupTx;
+     CardView login,sigin;
+-    String userkey;
+ 
+     private ProgressBar progressBar;
+ 
+@@ -31,7 +30,7 @@
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_log_in);
+-        Intent i =getIntent();
++
+         fbAuth = FirebaseAuth.getInstance();
+ 
+         sigin= findViewById(R.id.sign_card);
+@@ -77,7 +76,7 @@
+     }
+ 
+     void userLogin() {
+-        final String email = editEmail.getText().toString().trim();
++        String email = editEmail.getText().toString().trim();
+         String pass = editPass.getText().toString().trim();
+ 
+         if(email.isEmpty() || pass.isEmpty()) {
+@@ -96,9 +95,7 @@
+                             Toast.makeText(getApplicationContext(), "SUCCESSFULLY LOGGED IN", Toast.LENGTH_SHORT).show();
+ 
+ 
+-                            Intent intent=new Intent(LogInActivity.this, ChooseSubject.class);
+-
+-                            startActivity(intent);
++                            startActivity(new Intent(LogInActivity.this, ChooseSubject.class));
+                         } else {
+                             Toast.makeText(getApplicationContext(), "Failed! Please Try Again.", Toast.LENGTH_SHORT).show();
+                             progressBar.setVisibility(View.INVISIBLE);
+Index: app/src/main/res/layout/activity_sign_up.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_sign_up.xml	(date 1558158852418)
++++ app/src/main/res/layout/activity_sign_up.xml	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
+@@ -14,19 +14,8 @@
+         android:ems="10"
+         android:layout_marginLeft="30dp"
+         android:layout_marginRight="30dp"
+-        android:layout_marginTop="38dp"
+-        android:hint="User ID"
+-        android:inputType="textPersonName" />
+-
+-    <EditText
+-        android:id="@+id/editID2"
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:ems="10"
+-        android:layout_marginLeft="30dp"
+-        android:layout_marginRight="30dp"
+         android:layout_marginTop="118dp"
+-        android:hint="College Name"
++        android:hint="User ID"
+         android:inputType="textPersonName" />
+ 
+     <EditText
+Index: app/src/main/java/com/example/android/eduease/SignUpActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/android/eduease/SignUpActivity.java	(date 1558163970615)
++++ app/src/main/java/com/example/android/eduease/SignUpActivity.java	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
+@@ -15,21 +15,14 @@
+ import com.google.android.gms.tasks.Task;
+ import com.google.firebase.auth.AuthResult;
+ import com.google.firebase.auth.FirebaseAuth;
+-import com.google.firebase.database.DatabaseReference;
+-import com.google.firebase.database.FirebaseDatabase;
+ 
+ public class SignUpActivity extends AppCompatActivity {
+ 
+-    private EditText editID,editID2, editEmail, editPass, editRePass;
++    private EditText editID, editEmail, editPass, editRePass;
+     private TextView registerTx;
+-    private DatabaseReference stuDatabaseRef;
+-    public static String DATABASE_PATH = "student";
+     private FirebaseAuth fbAuth;
+     CardView register;
+ 
+-    StudentDataUpload stuitemUpload;
+-    String sn,sclg;
+-
+     private ProgressBar progressBar;
+ 
+     @Override
+@@ -39,13 +32,11 @@
+ 
+         fbAuth = FirebaseAuth.getInstance();
+ 
+-        stuDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
+-        stuitemUpload=new StudentDataUpload();
++
+ 
+         register=findViewById(R.id.card_reg);
+         editID = findViewById(R.id.editID);
+         editEmail = findViewById(R.id.textemailID);
+-        editID2 = findViewById(R.id.editID2);
+         editPass = findViewById(R.id.editPasskey);
+         editRePass = findViewById(R.id.editPasskey2);
+         registerTx = findViewById(R.id.register);
+@@ -71,8 +62,7 @@
+ 
+     void userRegister() {
+         String id = editID.getText().toString().trim();
+-        String id2 = editID2.getText().toString().trim();
+-        final String email = editEmail.getText().toString().trim();
++        String email = editEmail.getText().toString().trim();
+         String pass = editPass.getText().toString().trim();
+         String rePass = editRePass.getText().toString().trim();
+ 
+@@ -95,22 +85,7 @@
+                         if(task.isSuccessful()) {
+                             Toast.makeText(getApplicationContext(), "Registration Successful!", Toast.LENGTH_SHORT).show();
+ 
+-                            String student =stuDatabaseRef.push().getKey();
+-
+-                            sn = editID.getText().toString();
+-                            sclg = editID2.getText().toString();
+-
+-                            stuitemUpload.setName(sn);
+-                            stuitemUpload.setCllg(sclg);
+-
+-                            stuDatabaseRef.child(student).setValue(stuitemUpload);
+-
+-                            Intent intent =new Intent(SignUpActivity.this, LogInActivity.class);
+-                            /*
+-                            intent.putExtra("name",sn);
+-                            intent.putExtra("cllg",sclg);*/
+-
+-                            startActivity(intent);
++                            startActivity(new Intent(SignUpActivity.this, LogInActivity.class));
+                         }
+ 
+                         else {
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(date 1558285856781)
++++ .idea/gradle.xml	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
+@@ -3,16 +3,12 @@
+   <component name="GradleSettings">
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
+-        <option name="createEmptyContentRootDirectories" value="true" />
++        <compositeConfiguration>
++          <compositeBuild compositeDefinitionSource="SCRIPT" />
++        </compositeConfiguration>
+         <option name="distributionType" value="DEFAULT_WRAPPED" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-        <option name="modules">
+-          <set>
+-            <option value="$PROJECT_DIR$" />
+-            <option value="$PROJECT_DIR$/app" />
+-          </set>
+-        </option>
+-        <option name="useAutoImport" value="true" />
++        <option name="resolveModulePerSourceSet" value="false" />
+       </GradleProjectSettings>
+     </option>
+   </component>
+Index: app/src/main/java/com/example/android/eduease/TeacherDataRetrieve.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/android/eduease/TeacherDataRetrieve.java	(date 1558162529893)
++++ app/src/main/java/com/example/android/eduease/TeacherDataRetrieve.java	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
+@@ -1,20 +1,13 @@
+ package com.example.android.eduease;
+ 
+-import java.security.Key;
+-
+ public class TeacherDataRetrieve {
+-    String name,timeTo,TimeFrom,cllg,key;
+-    TeacherDataRetrieve(String n,String t,String f,String clg,String KEY)
++    String name,timeTo,TimeFrom,cllg;
++    TeacherDataRetrieve(String n,String t,String f,String clg)
+     {
+         name=n;
+         cllg=clg;
+         timeTo = t;
+         TimeFrom=f;
+-        key = KEY;
+-    }
+-
+-    public String getKey() {
+-        return key;
+     }
+ 
+     public String getCllg() {
+Index: app/src/main/java/com/example/android/eduease/TeacherDetail.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/android/eduease/TeacherDetail.java	(date 1558163398802)
++++ app/src/main/java/com/example/android/eduease/TeacherDetail.java	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
+@@ -4,39 +4,20 @@
+ import android.content.Intent;
+ import android.support.v7.app.AppCompatActivity;
+ import android.os.Bundle;
+-import android.util.Log;
+ import android.view.View;
+ import android.widget.Button;
+ import android.widget.TextView;
+-import android.widget.Toast;
+-
+-import com.google.firebase.database.DataSnapshot;
+-import com.google.firebase.database.DatabaseError;
+-import com.google.firebase.database.DatabaseReference;
+-import com.google.firebase.database.FirebaseDatabase;
+-import com.google.firebase.database.ValueEventListener;
+ 
+ public class TeacherDetail extends AppCompatActivity {
+ TextView toTime,fromTime,name,cllg;
+ Button ask;
+-    FirebaseDatabase database;
+-    DatabaseReference refRetrieve,refUpload;
+-    StudentDataUpload stuObj;
+-
+-    String retrievePath ;
+-    String uploadPath ;
+-
+-
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_teacher_detail);
+ 
+-         database = FirebaseDatabase.getInstance();
+-
+-
+-        toTime=findViewById(R.id.time_to);
++        toTime=findViewById(R.id.time_to);//chk if correct connction else chng the ids
+         fromTime= findViewById(R.id.time_from);
+         name=findViewById(R.id.name);
+         cllg=findViewById(R.id.cllg);
+@@ -49,59 +30,17 @@
+         c= i.getStringExtra("cllg");
+         t= i.getStringExtra("toTime");
+         f=i.getStringExtra("frmTime");
+-        uploadPath = i.getStringExtra("teacherKey");
+-        retrievePath = i.getStringExtra("userkey");
+ 
+-        refRetrieve = database.getReference(retrievePath);
+-
+-        refUpload=database.getReference(uploadPath);
+ 
+         toTime.setText(t);
+         fromTime.setText(f);
+         cllg.setText(c);
+         name.setText(n);
+ 
+-
+         ask.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+-
+-                //read student name
+-                refRetrieve.addValueEventListener(new ValueEventListener() {
+-                    @Override
+-                    public void onDataChange(DataSnapshot dataSnapshot) {
+-                        // This method is called once with the initial value and again
+-                        // whenever data at this location is updated.
+-                         stuObj = dataSnapshot.getValue(StudentDataUpload.class);
+-
+-                        Toast.makeText(TeacherDetail.this, stuObj.getCllg()+stuObj.getName(), Toast.LENGTH_SHORT).show();
+-
+-                        String s =refUpload.push().getKey();
+-                        refUpload.child(s).setValue(stuObj);
+-                        Toast.makeText(TeacherDetail.this, "TEACHER IS INFORMED", Toast.LENGTH_SHORT).show();
+-
+-                        finish();
+-
+-                        // Log.d(TAG, "Value is: " + value);
+-                    }
+-
+-                    @Override
+-                    public void onCancelled(DatabaseError error) {
+-                        // Failed to read value
+-                        Toast.makeText(getApplicationContext(),"retrival failed",Toast.LENGTH_SHORT).show();
+-                       // Log.w(TAG, "Failed to read value.", error.toException());
+-                    }
+-                });
+-
+-
+-                //write in teachers db
+-
+-               /* String s =refUpload.push().getKey();
+-                refUpload.child(s).setValue(stuObj);*/
+-
+                 //ask to book a meeting with the professor
+-
+-              //  Toast.makeText(TeacherDetail.this, "TEACHER IS INFORMED", Toast.LENGTH_SHORT).show();
+             }
+         });
+ 
+Index: app/src/main/java/com/example/android/eduease/objAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/android/eduease/objAdapter.java	(date 1558283649251)
++++ app/src/main/java/com/example/android/eduease/objAdapter.java	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
+@@ -1,7 +1,6 @@
+ package com.example.android.eduease;
+ 
+ 
+-import android.R;
+ import android.graphics.Typeface;
+ import android.support.annotation.NonNull;
+ import android.support.annotation.Nullable;
+@@ -14,7 +13,7 @@
+ import android.widget.ImageView;
+ import android.widget.TextView;
+ 
+-//import com.example.android.eduease.R;
++import com.example.android.eduease.R;
+ import com.example.android.eduease.TeacherDataRetrieve;
+ 
+ import java.util.ArrayList;
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(date 1558285273568)
++++ .idea/misc.xml	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
+@@ -5,7 +5,10 @@
+       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+     </configurations>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+-    <output url="file://$PROJECT_DIR$/classes" />
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/build/classes" />
++  </component>
++  <component name="ProjectType">
++    <option name="id" value="Android" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: app/src/main/java/com/example/android/eduease/TeacherDataUpload.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/android/eduease/TeacherDataUpload.java	(date 1558074988661)
++++ app/src/main/java/com/example/android/eduease/TeacherDataUpload.java	(revision 019193f20f562d5c02322d13eba1afc2169e77ee)
+@@ -68,7 +68,7 @@
+         return cllg;
+     }
+ 
+-   /* TeacherDataUpload(String NAME,String COLLEGE,String TIME_TO, boolean C,boolean DAA,boolean DS,boolean CPP,
++    TeacherDataUpload(String NAME,String COLLEGE,String TIME_TO, boolean C,boolean DAA,boolean DS,boolean CPP,
+     boolean ACT,boolean AEC,boolean DEC,boolean EEM,boolean EMFW,boolean JAVA,boolean BOTH,boolean SHORT,
+                       boolean LONG)
+     {
+@@ -91,7 +91,7 @@
+ 
+ 
+     }
+-*/
++
+     TeacherDataUpload()
+     {
+          name= cllg= timeTo=null;
