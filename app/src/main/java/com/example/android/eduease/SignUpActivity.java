@@ -15,15 +15,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private EditText editID, editEmail, editPass, editRePass;
+    private EditText editID,editID2, editEmail, editPass, editRePass;
     private TextView registerTx;
     private FirebaseAuth fbAuth;
     CardView register;
-
+    private DatabaseReference stuDatabaseRef;
+    public static String DATABASE_PATH = "student";
     private ProgressBar progressBar;
+    StudentDataUpload stuitemUpload;
+    String sn,sclg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +36,15 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         fbAuth = FirebaseAuth.getInstance();
+        stuDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
+
+        stuitemUpload=new StudentDataUpload();
 
 
 
         register=findViewById(R.id.card_reg);
         editID = findViewById(R.id.editID);
+        editID2 = findViewById(R.id.editID2);
         editEmail = findViewById(R.id.textemailID);
         editPass = findViewById(R.id.editPasskey);
         editRePass = findViewById(R.id.editPasskey2);
@@ -62,6 +71,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     void userRegister() {
         String id = editID.getText().toString().trim();
+        String id2 = editID2.getText().toString().trim();
         String email = editEmail.getText().toString().trim();
         String pass = editPass.getText().toString().trim();
         String rePass = editRePass.getText().toString().trim();
@@ -84,6 +94,17 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Registration Successful!", Toast.LENGTH_SHORT).show();
+                            String student =stuDatabaseRef.push().getKey();
+
+                            sn = editID.getText().toString();
+                            sclg = editID2.getText().toString();
+
+                            stuitemUpload.setName(sn);
+                            stuitemUpload.setClg(sclg);
+
+                            stuDatabaseRef.child(sn).setValue(stuitemUpload);
+
+
 
                             startActivity(new Intent(SignUpActivity.this, LogInActivity.class));
                         }
