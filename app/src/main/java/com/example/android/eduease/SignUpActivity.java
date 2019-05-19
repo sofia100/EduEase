@@ -40,8 +40,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         stuitemUpload=new StudentDataUpload();
 
-
-
         register=findViewById(R.id.card_reg);
         editID = findViewById(R.id.editID);
         editID2 = findViewById(R.id.editID2);
@@ -100,7 +98,7 @@ public class SignUpActivity extends AppCompatActivity {
                             sclg = editID2.getText().toString();
 
                             stuitemUpload.setName(sn);
-                            stuitemUpload.setClg(sclg);
+                            stuitemUpload.setCllg(sclg);
 
                             stuDatabaseRef.child(sn).setValue(stuitemUpload);
 
