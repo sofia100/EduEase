@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f771a0"
+    android:background="#ffb"
     tools:context="com.example.android.eduease.SignUpActivity">
 
     <EditText
@@ -68,7 +68,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="454dp"
-        app:cardBackgroundColor="#4B0082"
+        app:cardBackgroundColor="#09f"
         app:cardCornerRadius="25dp"
         app:cardElevation="10dp" >
 

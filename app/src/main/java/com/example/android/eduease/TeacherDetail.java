@@ -4,9 +4,13 @@ package com.example.android.eduease;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class TeacherDetail extends AppCompatActivity {
 TextView toTime,fromTime,name,cllg;
@@ -45,4 +49,28 @@ Button ask;
         });
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_bar,menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch(id)
+        {
+
+
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(TeacherDetail.this,STUDENT.class));
+                finish();
+                break;
+        }
+        return true;
+    }
+
 }

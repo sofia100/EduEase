@@ -1,7 +1,7 @@
 
 package com.example.android.eduease;
 
-        import android.app.Activity;
+      //  import android.app.Activity;
         import android.content.Intent;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
@@ -60,5 +60,11 @@ CardView sigin,log;
                 startActivity(t);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent i =  new Intent(STUDENT.this,MainActivity.class);
+        startActivity(i);
     }
 }

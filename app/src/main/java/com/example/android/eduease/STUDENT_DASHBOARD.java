@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +30,7 @@ String TAG = "STUDENT_DASHBOARD";
     DatabaseReference myRef;
     ArrayList<TeacherDataRetrieve> obj;
     ListView listView;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,8 @@ String TAG = "STUDENT_DASHBOARD";
         database= FirebaseDatabase.getInstance();
         myRef = database.getReference(subj);//subject
 
+        progressBar=findViewById(R.id.progress_bar_login);
+        progressBar.setVisibility(View.VISIBLE);
         listView = (ListView) findViewById(R.id.list);
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -51,6 +55,7 @@ String TAG = "STUDENT_DASHBOARD";
 
                 collectNames((Map<String,TeacherDataUpload>) dataSnapshot.getValue());
 
+                progressBar.setVisibility(View.INVISIBLE);
              }
 
             @Override
@@ -121,7 +126,10 @@ String TAG = "STUDENT_DASHBOARD";
 
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(STUDENT_DASHBOARD.this,STUDENT.class));
+                onBackPressed();
+                onBackPressed();
+                onBackPressed();
+                //startActivity(new Intent(STUDENT_DASHBOARD.this,STUDENT.class));
                 finish();
                 break;
         }
