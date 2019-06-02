@@ -76,7 +76,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     void userLogin() {
-        String email = editEmail.getText().toString().trim();
+        final String email = editEmail.getText().toString().trim();
         String pass = editPass.getText().toString().trim();
 
         if(email.isEmpty() || pass.isEmpty()) {
@@ -93,9 +93,10 @@ public class LogInActivity extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             //Start HomeActivity
                             Toast.makeText(getApplicationContext(), "SUCCESSFULLY LOGGED IN", Toast.LENGTH_SHORT).show();
+Intent i =new Intent(LogInActivity.this, ChooseSubject.class);
+i.putExtra("StudentEmail",email);
 
-
-                            startActivity(new Intent(LogInActivity.this, ChooseSubject.class));
+                            startActivity(i);
                         } else {
                             Toast.makeText(getApplicationContext(), "Failed! Please Try Again.", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);

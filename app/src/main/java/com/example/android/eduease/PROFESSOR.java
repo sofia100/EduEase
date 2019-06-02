@@ -17,8 +17,8 @@ public class PROFESSOR extends AppCompatActivity {
 Button done;
 CheckBox java,c,cpp,ds,daa,emfw,eem,act,aec,dec,short_time,long_time,both;
 EditText cllg,name,timeTO,timeFrom;
-
-    private DatabaseReference mDatabaseRef,AecRef,
+FirebaseDatabase inst;
+    private DatabaseReference mDatabaseRef,AecRef,dbref,
     ActRef,
     DecREf,
     CppREf,
@@ -33,7 +33,7 @@ EditText cllg,name,timeTO,timeFrom;
     BothRef;
     public static String DATABASE_PATH = "children";
     public static  String ACT="ACT",AEC="AEC",DEC="DEC",EEM="EEM",EMFW="EMFW",CPP="CPP",C="C",DS="DS",DAA="DAA",JAVA="JAVA",SHORT="SHORT",LONG="LONG",BOTH="BOTH";
-    String n,clg,tymTo,tymFrom;
+    String n,clg,tymTo,tymFrom,databasePath;
 
 
     TeacherDataUpload itemUpload;
@@ -42,7 +42,7 @@ EditText cllg,name,timeTO,timeFrom;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professor);
-
+        inst=FirebaseDatabase.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
         AecRef = FirebaseDatabase.getInstance().getReference(AEC);
         ActRef = FirebaseDatabase.getInstance().getReference(ACT);
@@ -136,6 +136,14 @@ EditText cllg,name,timeTO,timeFrom;
 
                 if(itemUpload.isBoth())
                     BothRef.child(BothRef.push().getKey()).setValue(itemUpload);
+
+
+                databasePath = n.replace(' ','_');
+                //                mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
+                 dbref = inst.getReference(databasePath);
+                //                mDatabaseRef.child(s).setValue(itemUpload);
+                //filhal ethire kichi b rahibani...se pate ask button marile hin ethi store haba
+                dbref.child("null0").setValue(new StudentDataUpload());
 
 
                 Toast.makeText(getApplicationContext(),"UPLOADED DATA TO DB",Toast.LENGTH_SHORT).show();

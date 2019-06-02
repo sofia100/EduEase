@@ -36,6 +36,8 @@ public class PROFESSOR_LoginActivity extends AppCompatActivity {
     Button mEmailSignInButton,mEmailLogInButton;
     String TAG = "PROFESSOR_LoginActivity";
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

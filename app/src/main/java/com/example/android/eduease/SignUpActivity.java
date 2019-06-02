@@ -68,9 +68,9 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     void userRegister() {
-        String id = editID.getText().toString().trim();
-        String id2 = editID2.getText().toString().trim();
-        String email = editEmail.getText().toString().trim();
+        final String id = editID.getText().toString().trim();
+        final String id2 = editID2.getText().toString().trim();
+        final String email = editEmail.getText().toString().trim();
         String pass = editPass.getText().toString().trim();
         String rePass = editRePass.getText().toString().trim();
 
@@ -94,17 +94,20 @@ public class SignUpActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Registration Successful!", Toast.LENGTH_SHORT).show();
                             String student =stuDatabaseRef.push().getKey();
 
-                            sn = editID.getText().toString();
-                            sclg = editID2.getText().toString();
+                            sn = id;//editID.getText().toString();
+                            sclg =id2;// editID2.getText().toString();
 
                             stuitemUpload.setName(sn);
                             stuitemUpload.setCllg(sclg);
+//child name email in db
+                            String e= email.replace('@','_');
+                            e= e.replace('.','_');
+                            stuDatabaseRef.child(e).setValue(stuitemUpload);
 
-                            stuDatabaseRef.child(sn).setValue(stuitemUpload);
-
-
-
-                            startActivity(new Intent(SignUpActivity.this, LogInActivity.class));
+                            Intent i = new Intent(SignUpActivity.this, LogInActivity.class);
+//                            i.putExtra("StudentEmail",email);
+//
+                            startActivity(i);
                         }
 
                         else {

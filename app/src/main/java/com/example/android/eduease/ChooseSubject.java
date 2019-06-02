@@ -15,13 +15,14 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ChooseSubject extends AppCompatActivity {
     TextView sjava,sc,scpp,sds,sdaa,semfw,seem,sact,saec,sdec;
    
-
+String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_subj);
 
+        email=getIntent().getStringExtra("StudentEmail");
         sjava= findViewById(R.id.checkbox_JAVA);
         sc= findViewById(R.id.checkbox_C);
         scpp= findViewById(R.id.checkbox_CPP);
@@ -38,6 +39,7 @@ public class ChooseSubject extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
                 intent.putExtra("subject","JAVA");
+                intent.putExtra("StudentEmail",email);
                 startActivity(intent);
             }
         });
@@ -46,6 +48,7 @@ public class ChooseSubject extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
                 intent.putExtra("subject","EMFW");
+                intent.putExtra("StudentEmail",email);
                 startActivity(intent);
             }
         });
@@ -55,6 +58,7 @@ public class ChooseSubject extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
                 intent.putExtra("subject","EEM");
+                intent.putExtra("StudentEmail",email);
                 startActivity(intent);
             }
         });
@@ -63,6 +67,7 @@ public class ChooseSubject extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
                 intent.putExtra("subject","DEC");
+                intent.putExtra("StudentEmail",email);
                 startActivity(intent);
             }
         });
@@ -71,6 +76,7 @@ public class ChooseSubject extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
                 intent.putExtra("subject","CPP");
+                intent.putExtra("StudentEmail",email);
                 startActivity(intent);
             }
         });
@@ -79,6 +85,7 @@ public class ChooseSubject extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
                 intent.putExtra("subject","C");
+                intent.putExtra("StudentEmail",email);
                 startActivity(intent);
             }
         });
@@ -87,6 +94,7 @@ public class ChooseSubject extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
                 intent.putExtra("subject","DAA");
+                intent.putExtra("StudentEmail",email);
                 startActivity(intent);
             }
         });
@@ -95,6 +103,7 @@ public class ChooseSubject extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
                 intent.putExtra("subject","ACT");
+                intent.putExtra("StudentEmail",email);
                 startActivity(intent);
             }
         });
@@ -103,6 +112,7 @@ public class ChooseSubject extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
                 intent.putExtra("subject","DS");
+                intent.putExtra("StudentEmail",email);
                 startActivity(intent);
             }
         });
@@ -111,6 +121,7 @@ public class ChooseSubject extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
                 intent.putExtra("subject","AEC");
+                intent.putExtra("StudentEmail",email);
                 startActivity(intent);
             }
         });

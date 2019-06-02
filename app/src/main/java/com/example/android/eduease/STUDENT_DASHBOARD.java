@@ -31,6 +31,7 @@ String TAG = "STUDENT_DASHBOARD";
     ArrayList<TeacherDataRetrieve> obj;
     ListView listView;
     ProgressBar progressBar;
+    String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ String TAG = "STUDENT_DASHBOARD";
 
         Intent intent = getIntent();
         String subj = intent.getStringExtra("subject");
-
+email=intent.getStringExtra("StudentEmail");
         database= FirebaseDatabase.getInstance();
         myRef = database.getReference(subj);//subject
 
@@ -78,6 +79,7 @@ String TAG = "STUDENT_DASHBOARD";
                 intent.putExtra("cllg",data.getCllg());
                 intent.putExtra("toTime",data.getTimeTo());
                 intent.putExtra("frmTime",data.getTimeFrom());
+                intent.putExtra("StudentEmail",email);
                 //name or key or all data of the teacher selected
                 startActivity(intent);
             }
@@ -126,10 +128,7 @@ String TAG = "STUDENT_DASHBOARD";
 
             case R.id.logout:
                 FirebaseAuth.getInstance().signOut();
-                onBackPressed();
-                onBackPressed();
-                onBackPressed();
-                //startActivity(new Intent(STUDENT_DASHBOARD.this,STUDENT.class));
+                startActivity(new Intent(STUDENT_DASHBOARD.this,STUDENT.class));
                 finish();
                 break;
         }

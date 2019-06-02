@@ -77,8 +77,8 @@
             android:textSize="18sp"
             android:layout_below="@id/cllg"
             android:text="@string/to_time"
-            android:layout_toRightOf="@id/timetxt"
-            android:layout_toEndOf="@id/timetxt"
+            android:layout_toRightOf="@id/time_from"
+            android:layout_toEndOf="@id/time_from"
             android:paddingStart="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_vertical_margin"/>
 
@@ -90,8 +90,8 @@
             android:textSize="18sp"
             android:layout_below="@id/cllg"
             android:text="@string/from_time"
-            android:layout_toRightOf="@id/time_to"
-            android:layout_toEndOf="@id/time_to"
+            android:layout_toRightOf="@id/timetxt"
+            android:layout_toEndOf="@id/timetxt"
             android:paddingStart="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_vertical_margin"/>
 
