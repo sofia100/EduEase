@@ -43,6 +43,7 @@ public class LogInActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progress_bar_login);
         progressBar.setVisibility(View.INVISIBLE);
 
+
         sigin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,8 +95,11 @@ public class LogInActivity extends AppCompatActivity {
                             //Start HomeActivity
                             Toast.makeText(getApplicationContext(), "SUCCESSFULLY LOGGED IN", Toast.LENGTH_SHORT).show();
 Intent i =new Intent(LogInActivity.this, ChooseSubject.class);
-i.putExtra("StudentEmail",email);
+                            String e= email.replace('@','_');
+                            e= e.replace('.','_');
 
+                            i.putExtra("StudentEmail",e);
+//email ta extract houni for old users
                             startActivity(i);
                         } else {
                             Toast.makeText(getApplicationContext(), "Failed! Please Try Again.", Toast.LENGTH_SHORT).show();

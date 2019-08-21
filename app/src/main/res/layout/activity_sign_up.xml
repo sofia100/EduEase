@@ -15,7 +15,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="58dp"
-        android:hint="Student Name"
+        android:hint="@string/student_name"
         android:textAllCaps="true"
         android:inputType="textPersonName" />
     <EditText

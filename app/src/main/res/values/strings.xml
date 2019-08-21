@@ -42,5 +42,6 @@
     <string name="available_teachers">AVAILABLE TEACHERS</string>
     <string name="upcoming_meetings">UPCOMING MEETINGS</string>
     <string name="ask">ASK</string>
+    <string name="student_name">Student Name</string>
 
 </resources>
