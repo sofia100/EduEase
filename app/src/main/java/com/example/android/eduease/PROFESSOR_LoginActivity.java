@@ -128,7 +128,12 @@ public class PROFESSOR_LoginActivity extends AppCompatActivity {
 
     }
 
-   /* @Override
+    @Override
+    public void onBackPressed() {
+        Intent i=new Intent(PROFESSOR_LoginActivity.this,MainActivity.class);
+        startActivity(i);
+    }
+    /* @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.

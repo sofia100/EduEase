@@ -48,6 +48,10 @@ public class TeacherDataUpload {
         return timeTo;
     }
 
+    public String getTimeFRom() {
+        return timeFRom;
+    }
+
     public boolean isShortTime() {
         return shortTime;
     }
@@ -70,7 +74,7 @@ public class TeacherDataUpload {
 
     TeacherDataUpload(String NAME,String COLLEGE,String TIME_TO, boolean C,boolean DAA,boolean DS,boolean CPP,
     boolean ACT,boolean AEC,boolean DEC,boolean EEM,boolean EMFW,boolean JAVA,boolean BOTH,boolean SHORT,
-                      boolean LONG)
+                      boolean LONG,String TIMEFROM)
     {
         name= NAME;
         cllg=COLLEGE;
@@ -88,13 +92,13 @@ public class TeacherDataUpload {
         longTime = LONG;
         shortTime= SHORT;
         ds= DS;
-
+timeFRom=TIMEFROM;
 
     }
 
     TeacherDataUpload()
     {
-         name= cllg= timeTo=null;
+         name= cllg= timeTo=timeFRom=null;
          java=cpp=c=ds=daa=act=emfw=eem=aec=dec=shortTime=longTime=both=false;
 
     }

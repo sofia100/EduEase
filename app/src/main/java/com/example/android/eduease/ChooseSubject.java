@@ -3,6 +3,7 @@ package com.example.android.eduease;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +40,7 @@ String email;
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), STUDENT_DASHBOARD.class);
                 intent.putExtra("subject","JAVA");
+              //  Log.v("ChooseSubj","run horha h");
                 intent.putExtra("StudentEmail",email);
                 startActivity(intent);
             }

@@ -56,7 +56,7 @@ email=intent.getStringExtra("StudentEmail");
 
                 collectNames((Map<String,TeacherDataUpload>) dataSnapshot.getValue());
 
-                progressBar.setVisibility(View.INVISIBLE);
+               progressBar.setVisibility(View.INVISIBLE);
              }
 
             @Override
