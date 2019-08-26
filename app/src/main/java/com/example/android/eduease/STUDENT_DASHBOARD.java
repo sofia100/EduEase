@@ -54,8 +54,37 @@ email=intent.getStringExtra("StudentEmail");
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
 
-                collectNames((Map<String,TeacherDataUpload>) dataSnapshot.getValue());
+               // collectNames((Map<String,TeacherDataUpload>) dataSnapshot.getValue());
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+              //  Log.v("mow","error nhi hai3");
 
+                //collectNames((Map<String,TeacherDataUpload>) dataSnapshot.getValue());
+
+
+
+                obj= new ArrayList<>();
+              //  Log.v("mow","error nhi hai600000");
+
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    TeacherDataUpload value = postSnapshot.getValue(TeacherDataUpload.class);
+                  //  Log.v("nhhu","nhi ho rha thisssss");
+                    obj.add(new TeacherDataRetrieve(value.getName(),value.getTimeTo(),value.getTimeFRom(),value.getCllg()));
+                    // Log.e("Get Data", post.<YourMethod>());
+                }
+                //   TeacherDataRetrieve value = dataSnapshot.getValue(TeacherDataRetrieve.class);
+             /*   obj.add( new TeacherDataRetrieve( singleUser.get("name").toString(),
+                        singleUser.get("timeTo").toString(),
+                        singleUser.get("timeFRom").toString(),
+                        singleUser.get("cllg").toString()));
+*/            //    Log.v("mow","error nhi hai000");
+
+                objAdapter adapter = new objAdapter(getApplicationContext(), obj);
+              //  Log.v("mow","error nhi hai6");
+
+                listView.setAdapter(adapter);
+
+             //   Log.i("onDisabled","info");
                progressBar.setVisibility(View.INVISIBLE);
              }
 
