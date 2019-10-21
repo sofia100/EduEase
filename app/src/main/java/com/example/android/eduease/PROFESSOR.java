@@ -3,6 +3,7 @@ package com.example.android.eduease;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -42,7 +43,6 @@ FirebaseDatabase inst;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_professor);
-        inst=FirebaseDatabase.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
         AecRef = FirebaseDatabase.getInstance().getReference(AEC);
         ActRef = FirebaseDatabase.getInstance().getReference(ACT);
@@ -79,11 +79,13 @@ FirebaseDatabase inst;
         short_time= findViewById(R.id.checkbox_short_discussion);
         long_time= findViewById(R.id.checkbox_long_class);
 
+        Log.v("done","entered not");
 
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                Log.v("done","entered ");
                  String s =mDatabaseRef.push().getKey();
                 n = name.getText().toString();
                 clg = cllg.getText().toString();
@@ -94,10 +96,13 @@ FirebaseDatabase inst;
                 itemUpload.setCllg(clg);
                 itemUpload.setTimeTo(tymTo);
                 itemUpload.setTimeFRom(tymFrom);
+                itemUpload.setKey(s);
 
+                Log.v("done","entered middle");
 
                 mDatabaseRef.child(s).setValue(itemUpload);
-                
+
+                Log.v("done","entered item upload");
                 if(itemUpload.isAec())
                     AecRef.child(AecRef.push().getKey()).setValue(itemUpload);
 
@@ -122,6 +127,7 @@ FirebaseDatabase inst;
                 if(itemUpload.isJava())
                     JavaREf.child(JavaREf.push().getKey()).setValue(itemUpload);
 
+                Log.v("done","entered ticks");
                 if(itemUpload.isAct())
                     ActRef.child(ActRef.push().getKey()).setValue(itemUpload);
 
@@ -139,12 +145,19 @@ FirebaseDatabase inst;
 
 
                 databasePath = n.replace(' ','_');
-                //                mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
-                 dbref = inst.getReference(databasePath);
-                //                mDatabaseRef.child(s).setValue(itemUpload);
-                //filhal ethire kichi b rahibani...se pate ask button marile hin ethi store haba
-                dbref.child("null0").setValue(new StudentDataUpload());
 
+                Log.v("done","entered replace"+databasePath);//etiki hela
+                //error after this coz no such path....
+
+                               mDatabaseRef = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
+               //  dbref = FirebaseDatabase.getInstance().getReference(databasePath);
+
+                Log.v("done","entered path");
+                               mDatabaseRef.child(s).setValue(itemUpload);
+                //filhal ethire kichi b rahibani...se pate ask button marile hin ethi store haba
+              //  dbref.child("null0").setValue(new StudentDataUpload());
+
+                Log.v("done","entered student");
 
                 Toast.makeText(getApplicationContext(),"UPLOADED DATA TO DB",Toast.LENGTH_SHORT).show();
 

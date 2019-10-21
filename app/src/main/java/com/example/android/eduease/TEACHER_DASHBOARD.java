@@ -46,7 +46,8 @@ public class TEACHER_DASHBOARD extends AppCompatActivity {
     public void onBackPressed() {
         //sign out from app even if back is pressed
             FirebaseAuth.getInstance().signOut();
-            super.onBackPressed();
+        startActivity(new Intent(TEACHER_DASHBOARD.this,PROFESSOR_LoginActivity.class));
+        super.onBackPressed();
 
     }
 }

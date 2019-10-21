@@ -1,7 +1,7 @@
 package com.example.android.eduease;
 
 class StudentDataUpload {
-    String name,cllg;
+    String name,cllg,key;
 
     public String getCllg() {
         return cllg;
@@ -19,14 +19,18 @@ class StudentDataUpload {
         this.cllg = cllg;
     }
 
-    StudentDataUpload(String NAME,String CLLG)
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    StudentDataUpload(String NAME, String CLLG)
     {
         name = NAME;
         cllg=CLLG;
     }
     StudentDataUpload()
     {
-        name = null;
+        name = key=null;
         cllg=null;
     }
 }

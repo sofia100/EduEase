@@ -48,7 +48,7 @@ String stuEmail;
       //  myRef =  FirebaseDatabase.getInstance().getReference("student/"+stuEmail.trim());
 
         Intent i=getIntent();
-        String n,c,t,f;
+        final String n,c,t,f;
         n = i.getStringExtra("name");
         c= i.getStringExtra("cllg");
         t= i.getStringExtra("toTime");
@@ -62,7 +62,7 @@ String stuEmail;
         cllg.setText(c);
         name.setText(n);
 
-        dbref = FirebaseDatabase.getInstance().getReference(path);
+        dbref = FirebaseDatabase.getInstance().getReference("meeting");
 
         ask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +115,7 @@ String stuEmail;
 
 
                 //upload student data to teachers db
-                dbref.child(stuName).setValue(stuupload);
+                dbref.child(n).setValue(stuupload);
 
                 //toast
              //   Toast.makeText(getApplicationContext(),"REQUEST IS SENT",Toast.LENGTH_SHORT).show();
@@ -134,19 +134,15 @@ String stuEmail;
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        switch(id)
-        {
-
-
-            case R.id.logout:
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(TeacherDetail.this,STUDENT.class));
-                finish();
-                break;
+        if (id == R.id.logout) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(TeacherDetail.this, STUDENT.class));
+            finish();
         }
         return true;
     }
 
+/*
     private void collectNames(Map<String,StudentDataUpload> users) {
 
       //  obj= new ArrayList<>();
@@ -158,11 +154,13 @@ String stuEmail;
             Map singleUser = (Map) entry.getValue();
             //Get phone field and append to list
             //obj.add( new TeacherDataRetrieve( singleUser.get("name").toString(),
-              /*      singleUser.get("timeTo").toString(),
+              */
+/*      singleUser.get("timeTo").toString(),
                     singleUser.get("timeFRom").toString(),
                     singleUser.get("cllg").toString()));
 
-*/
+*//*
+
               if((entry.getKey()).equals(stuEmail))
               {
                   stuupload.cllg=singleUser.get("cllg").toString();
@@ -178,5 +176,6 @@ String stuEmail;
 
 
     }
+*/
 
 }

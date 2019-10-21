@@ -99,6 +99,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                             stuitemUpload.setName(sn);
                             stuitemUpload.setCllg(sclg);
+                            stuitemUpload.setKey(student);
 //child name email in db
                             String e= email.replace('@','_');
                             e= e.replace('.','_');

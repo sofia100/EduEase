@@ -1,7 +1,7 @@
 package com.example.android.eduease;
 
 public class TeacherDataUpload {
-    String name, cllg, timeTo,timeFRom;
+    String name, cllg, timeTo,timeFRom,key;
     boolean java,cpp,c,ds,daa,act,emfw,eem,aec,dec,shortTime,longTime,both;
 
     public boolean isC() {
@@ -30,6 +30,14 @@ public class TeacherDataUpload {
 
     public boolean isEmfw() {
         return emfw;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public boolean isDec() {
@@ -98,7 +106,7 @@ timeFRom=TIMEFROM;
 
     TeacherDataUpload()
     {
-         name= cllg= timeTo=timeFRom=null;
+         name= cllg= timeTo=timeFRom=key=null;
          java=cpp=c=ds=daa=act=emfw=eem=aec=dec=shortTime=longTime=both=false;
 
     }
