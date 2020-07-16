@@ -4,11 +4,14 @@
 <ScrollView android:id="@+id/login_form"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="#ffb"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <LinearLayout
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
+            android:layout_marginTop="60dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -20,6 +23,7 @@
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
+                    android:layout_margin="@dimen/activity_vertical_margin"
                     android:singleLine="true" />
 
 
@@ -30,30 +34,68 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
                     android:imeActionId="6"
+                    android:layout_margin="@dimen/activity_vertical_margin"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true" />
 
+            <android.support.v7.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:id="@+id/card_reg1"
+                android:layout_marginLeft="100dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="454dp"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                app:cardBackgroundColor="#09f"
+                app:cardCornerRadius="25dp"
+                app:cardElevation="10dp" >
 
-            <Button
-                android:id="@+id/email_sign_in_button"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="sign in"
-                android:textStyle="bold" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/email_log_in_button"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="log in"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/email_sign_in_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SIGN IN"
+                        android:textColor="#fff"
+                        android:layout_centerInParent="true"/>
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:id="@+id/card_reg2"
+                android:layout_marginTop="454dp"
+                app:cardBackgroundColor="#09f"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                app:cardCornerRadius="25dp"
+                app:cardElevation="10dp" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/email_log_in_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LOG IN"
+                        android:textColor="#fff"
+                        android:layout_centerInParent="true"/>
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+
+
 
         </LinearLayout>
     </ScrollView>

@@ -30,6 +30,7 @@ DatabaseReference dbref,myRef;
 String path;
 StudentDataUpload stuupload;
 String stuEmail;
+MeetingObj meetingObj;
    String stuName="null";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,17 +43,20 @@ String stuEmail;
         cllg=findViewById(R.id.cllg);
         ask=findViewById(R.id.ask);
 
+meetingObj=new MeetingObj();
 
        stuEmail= getIntent().getStringExtra("StudentEmail");
         myRef =  FirebaseDatabase.getInstance().getReference("student");
       //  myRef =  FirebaseDatabase.getInstance().getReference("student/"+stuEmail.trim());
 
         Intent i=getIntent();
-        final String n,c,t,f;
+        final String n,c,t,f,k;
         n = i.getStringExtra("name");
         c= i.getStringExtra("cllg");
         t= i.getStringExtra("toTime");
         f=i.getStringExtra("frmTime");
+
+        k=i.getStringExtra("Tkey");
 
 
         path=n;
@@ -64,6 +68,7 @@ String stuEmail;
 
         dbref = FirebaseDatabase.getInstance().getReference("meeting");
 
+        meetingObj.setTeacherKey(k);
         ask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -109,6 +109,7 @@ email=intent.getStringExtra("StudentEmail");
                 intent.putExtra("toTime",data.getTimeTo());
                 intent.putExtra("frmTime",data.getTimeFrom());
                 intent.putExtra("StudentEmail",email);
+               // intent.putExtra("StudentEmail",data.ge);
                 //name or key or all data of the teacher selected
                 startActivity(intent);
             }

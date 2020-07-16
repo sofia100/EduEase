@@ -1,7 +1,7 @@
 package com.example.android.eduease;
 
 public class TeacherDataRetrieve {
-    String name,timeTo,TimeFrom,cllg;
+    String name,timeTo,TimeFrom,cllg,key;
     TeacherDataRetrieve(String n,String t,String f,String clg)
     {
         name=n;
