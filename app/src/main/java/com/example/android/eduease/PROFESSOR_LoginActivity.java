@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 
 import android.view.View;
@@ -33,7 +34,7 @@ public class PROFESSOR_LoginActivity extends AppCompatActivity {
 
     private EditText mEmailView;
     private EditText mPasswordView;
-    Button mEmailSignInButton,mEmailLogInButton;
+    CardView mEmailSignInButton,mEmailLogInButton;
     String TAG = "PROFESSOR_LoginActivity";
 
 
@@ -44,7 +45,7 @@ public class PROFESSOR_LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_professor__login);
 
         FirebaseApp.initializeApp(getApplicationContext());
-        mEmailLogInButton = findViewById(R.id.email_log_in_button);
+        mEmailLogInButton = findViewById(R.id.card_reg2);
 
         // Set up the login form.
         mEmailView = findViewById(R.id.email);
@@ -53,7 +54,7 @@ public class PROFESSOR_LoginActivity extends AppCompatActivity {
         mPasswordView = findViewById(R.id.password);
 
 
-        mEmailSignInButton = findViewById(R.id.email_sign_in_button);
+        mEmailSignInButton = findViewById(R.id.card_reg1);
 
         mAuth = FirebaseAuth.getInstance();
 
